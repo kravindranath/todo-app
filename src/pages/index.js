@@ -3,6 +3,7 @@ import axios from "axios";
 import Navigation from "src/ui/Navigation";
 import Layout from "src/ui/Layout/Layout";
 import ListCards from "src/ui/ListCards";
+import COMMON from "src/utils/api/config";
 
 const EMPTY_OBJ = {};
 
@@ -22,13 +23,15 @@ function HomePage(_props) {
 }
 export async function getServerSideProps(context) {
   const { query, req, res } = { ...context };
-  const section = query.section || "";
-
+  const view = query.view || "";
+  const url = COMMON.API.showList.default;
+  console.log("==>", url);
   let apiData = {};
   await axios
-    .get(`http://localhost:3000/api/show`)
+    .get(url)
     .then((res) => {
-      apiData = res.data;
+      console.log("==>", JSON.parse(res));
+      apiData = res.json();
     })
     .catch((err) => {
       apiData = err;
