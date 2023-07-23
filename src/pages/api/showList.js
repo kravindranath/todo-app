@@ -1,9 +1,6 @@
-import axios from "axios";
-import COMMON from "src/utils/api/config";
-import { parseShowList } from "src/utils/api/parsers/showList";
+import { parseShowList } from "src/utils/api/parsers/common";
 import conn from "src/utils/db";
 
-const EMPTY_ARR = [];
 const ERROR_400 = { message: "Error fetching data", status: 400 };
 
 export default async function showListHandler({ query: { view } }, res, req) {

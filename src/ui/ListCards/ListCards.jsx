@@ -6,7 +6,18 @@ function ListCards(_props) {
   const props = _props || EMPTY_OBJ;
   const cards = props.cards || [];
   const cardsHTML = cards.map((card, key) => {
-    return <Card key={key} content={card.content} title={card.title} />;
+    console.log(card.user_id);
+    const isCurrentUser = props.user_id === card.user_id;
+    return (
+      isCurrentUser && (
+        <Card
+          key={key}
+          content={card.content}
+          title={card.title}
+          author={props.author}
+        />
+      )
+    );
   });
   return (
     <>
@@ -21,6 +32,7 @@ function Card(_props) {
   return (
     <div className={styles.card}>
       <h3 className={styles.subHeading}>{props.title}</h3>
+      <small>by: {props.author}</small>
       <p>{props.content}</p>
     </div>
   );
