@@ -1,0 +1,27 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "",
+  "author": "Ravindranath K",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "dev": "next dev",
+    "telemetry": "next telemetry"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "lodash": "^4.17.21",
+    "next": "^10.2.3",
+    "pg": "^8.11.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "swr": "^0.5.7"
+  },
+  "devDependencies": {
+    "sass": "^1.45.0"
+  }
+}
