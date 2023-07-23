@@ -12,7 +12,8 @@ export default async function showListHandler({ query: { view } }, res, req) {
   //connect to the db notes
   try {
     console.log("req nom", req?.body);
-    const dbquery = 'SELECT content, user_id, status FROM public."notes"';
+    const dbquery =
+      'SELECT content, user_id, title, status FROM public."notes"';
     const result = await conn.query(dbquery);
     const parsedResults = parseShowList(result?.rows);
     res.status(200).json(parsedResults);

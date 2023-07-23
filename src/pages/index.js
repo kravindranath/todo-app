@@ -6,12 +6,12 @@ import ListCards from "src/ui/ListCards";
 import COMMON from "src/utils/api/config";
 
 const EMPTY_OBJ = {};
+const heading = "To-do list";
 
 function HomePage(_props) {
   const props = _props || EMPTY_OBJ;
-  const view = props.view || "";
-  const results = props.results || [];
-  const heading = view === "all" ? "Show all" : "";
+  const results = props.data || [];
+
   return (
     <div>
       <Navigation />
@@ -25,20 +25,11 @@ export async function getServerSideProps(context) {
   const { query, req, res } = { ...context };
   const view = query.view || "";
   const url = COMMON.API.showList.default;
-  console.log("==>", url);
-  let apiData = {};
-  await axios
-    .get(url)
-    .then((res) => {
-      console.log("==>", JSON.parse(res));
-      apiData = res.json();
-    })
-    .catch((err) => {
-      apiData = err;
-    });
+  let apiData = await axios.get(url).then((response) => response.data);
+  console.log("==>", apiData);
 
   return {
-    props: { ...apiData, view },
+    props: { data: apiData },
   };
 }
 

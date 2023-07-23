@@ -2,7 +2,7 @@ const API_KEY = process.env.API_KEY;
 
 export const API = {
   showList: {
-    default: `https://localhost:3000/api/showList`,
+    default: `http://localhost:3000/api/showList`,
   },
 };
 
